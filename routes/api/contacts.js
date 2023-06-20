@@ -1,5 +1,9 @@
 const express = require("express");
-const { validateBody, isValidId, authenticate } = require("../../middlewares");
+const {
+  validateBody,
+  isValidId,
+  authenticate,
+} = require("../../middlewares");
 const {
   ContactModel: { schemas },
 } = require("../../models");
