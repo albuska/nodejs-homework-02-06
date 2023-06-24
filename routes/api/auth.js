@@ -12,11 +12,6 @@ router.post(
   validateBody(schemasUser.registerSchema), upload.single('avatar'),
   ctrlUsers.register);
 
-// router.post("/", upload.single("avatar"), (req, res) => {
-//   console.log(req.body)
-//   console.log(req.file)
-// });
-
 router.post("/login", validateBody(schemasUser.loginSchema), ctrlUsers.login) 
 
 router.post("/logout", authenticate, ctrlUsers.logout); 
