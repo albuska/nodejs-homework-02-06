@@ -2,7 +2,8 @@ const { httpError, ctrlWrapper } = require("../../helpers");
 const {
   UserModel: { User },
 } = require("../../models");
-const {createHashPassword} = require("../../units");
+const { createHashPassword } = require("../../units");
+const gravatar = require("gravatar");
 
 const register = async (req, res) => {
   const { email, password } = req.body;
@@ -10,9 +11,11 @@ const register = async (req, res) => {
   if (user) {
     throw httpError(409, "Email in use");
   }
+  const avatarURL = gravatar.url(email);
   const newUser = await User.create({
     ...req.body,
     password: await createHashPassword(password),
+    avatarURL,
   });
   res.status(201).json({
     user: {
