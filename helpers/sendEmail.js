@@ -8,8 +8,6 @@ const nodemailerConfig = {
   host: "smtp.gmail.com",
   port: 587,
   secure: true,
-  logger: true,
-  debug: true,
   secureConnection: false,
   auth: {
     user: "alagrisenko3@gmail.com",
