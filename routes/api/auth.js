@@ -12,6 +12,10 @@ router.post(
   validateBody(schemasUser.registerSchema), upload.single('avatar'),
   ctrlUsers.register);
 
+router.get("/verify/:verificationToken", ctrlUsers.verifyEmail);
+
+router.post("/verify", validateBody(schemasUser.verifySchema), ctrlUsers.resendVerifyEmail);
+
 router.post("/login", validateBody(schemasUser.loginSchema), ctrlUsers.login) 
 
 router.post("/logout", authenticate, ctrlUsers.logout); 

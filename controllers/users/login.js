@@ -8,9 +8,13 @@ const { getToken } = require("../../units");
 const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
+
   if (!user) {
     throw httpError(401, "Email or password is wrong");
   }
+
+  if (!user.verify) throw httpError(401, "Email not verified");
+  
 
   const passwordCompare = await bcrypt.compare(password, user.password);
 
