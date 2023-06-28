@@ -14,7 +14,7 @@ const multerConfig = multer.diskStorage({
     resize: { width: 250, height: 250 },
   },
   limits: {
-    fileSize: 2048,
+    fileSize: 2 * 1024 * 1024,
   },
 });
 
